@@ -4,7 +4,7 @@ custom_domain = "https://emotion.sky123.top"
 custom_file = "onetwo"
 custom_name = "一二"
 size = 332
-page = 8
+page = 5
 
 pageSize = size // page
 
