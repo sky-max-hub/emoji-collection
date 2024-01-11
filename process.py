@@ -8,6 +8,7 @@ page = 8
 
 pageSize = size // page
 
+includeItems = []
 totalCount = 1
 for pageCount in range(1, page + 1):
     dictData = {}
@@ -21,7 +22,11 @@ for pageCount in range(1, page + 1):
         dictData["items"].append(item)
         totalCount = totalCount + 1
     fileName = f"{custom_file}-{pageCount}.json"
+    includeItems.append(f"{custom_domain}/{custom_file}/{fileName}")
     with open("./" + custom_file + "/" + fileName, "wb") as f:
         f.write(json.dumps(dictData, indent=4, ensure_ascii=False).encode())
+
+with open("./" + custom_file + "/include.json", "wb") as f:
+    f.write(json.dumps(includeItems, indent=4, ensure_ascii=False).encode())
 
 print("--------处理完成--------")
