@@ -17,7 +17,7 @@ for pageCount in range(1, page + 1):
     for itemCount in range(1, pageSize + 1):
         item = {}
         item["key"] = f"{custom_file}-{totalCount}"
-        item["val"] = f"{custom_domain}/data/{totalCount}.gif"
+        item["val"] = f"{custom_domain}/{custom_file}/data/{totalCount}.gif"
         dictData["items"].append(item)
         totalCount = totalCount + 1
     fileName = f"{custom_file}-{pageCount}.json"
