@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"github.com/russross/blackfriday/v2"
 	"html/template"
 	"os"
 	"strconv"
@@ -16,8 +17,30 @@ var size = 332
 var page = 5
 
 func main() {
-	generateHtml()
+	//generateHtml()
 	//generateJson()
+	transferMdToHtml()
+}
+
+func transferMdToHtml() {
+	// 输入文件路径
+	inputFile := "../README.md"
+	outputFile := "../index.html"
+	// 读取 README.md 文件内容
+	mdContent, err := os.ReadFile(inputFile)
+	if err != nil {
+		fmt.Printf("Error reading file %s: %v\n", inputFile, err)
+		return
+	}
+	// 使用 blackfriday 将 Markdown 转为 HTML
+	htmlContent := blackfriday.Run(mdContent)
+	// 将 HTML 写入 index.html 文件
+	err = os.WriteFile(outputFile, htmlContent, 0644)
+	if err != nil {
+		fmt.Printf("Error writing file %s: %v\n", outputFile, err)
+		return
+	}
+	fmt.Printf("Successfully converted %s to %s\n", inputFile, outputFile)
 }
 
 func generateJson() {
