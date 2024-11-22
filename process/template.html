@@ -1,0 +1,7 @@
+<table>{{range .}}
+    <tr>{{range .Emojis}}
+        <td>
+          <img src="{{.Path}}" width="{{.Width}}" alt="{{.Alt}}"></img>
+        </td>{{end}}
+    </tr>{{end}}
+</table>
